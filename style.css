@@ -1,0 +1,67 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.calculator__body {
+    width: 420px;
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0px;
+}
+
+.displayContainer {
+    text-align: end;
+    height: 100px;
+    width: 300px;
+    margin: 8px;
+    border: 5px solid black;
+    margin-bottom: 0px;
+    overflow: scroll;
+    font-size: 30px;
+}
+.display-top {
+    height: 60%;
+}
+.display-bottom {
+    height: 40%;
+}
+/* button */
+/* overall button design */
+.btn {
+    padding: 8px;
+    width: 4em;
+    margin: .5em;
+    font-size: 16px;
+}
+.btn_container {
+    /* display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+}
+.btn__container-col {
+    display: flex;
+    flex-direction: column;
+}
+.btn_power {
+    background-color: grey;
+    color: white;
+}
+
+/* JavaScript Styles */
+.btn_disabled {
+    background-color: grey;
+    color: white;
+}
+/* power button design */
+.calculator_ON {
+    background-color: green;
+    color: black;
+}
