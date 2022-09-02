@@ -31,6 +31,7 @@
 }
 .display-top {
     height: 60%;
+    font-size: .85em;
 }
 .display-bottom {
     height: 40%;
@@ -68,6 +69,13 @@
     color: black;
     border: 2px solid rgba(230, 190, 174, 0.781);
 }
+footer {
+    position: absolute;
+    font-size: .85em;
+    right: 45px;
+    bottom: 12px;
+}
+
 
 /* JavaScript Styles */
 .btn_disabled {
@@ -83,9 +91,6 @@
     color: black;
 }
 
-footer {
-    position: absolute;
-    font-size: .85em;
-    right: 45px;
-    bottom: 10px;
+.screenDisabled {
+    background-color: #e7d8c9;
 }

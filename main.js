@@ -5,9 +5,11 @@ const display = document.querySelector('.display-bottom');
 const displayTop = document.querySelector('.display-top');
 //constant variable used for power button
 const power = document.querySelector('.btn_power');
+const displayContainer = document.getElementsByClassName('displayContainer');
 //const var for style
 const btnDisable = document.querySelectorAll('.btn');
 disabledButton();
+disableScreen();
 
 // variables
 let num1 = undefined;
@@ -37,80 +39,82 @@ Array.from(operationButton).forEach(key =>
     operationUsed = getOperation.target.textContent;
     // console.log(operationUsed)
     
-    if(operationUsed == "AC") {
-      ac();
-    } else if(operationUsed == "C") {
-      c();
-    } else if(operationUsed == "ON") {
-      power(operationUsed);
-    } else if(operationUsed == "+/-") {
-      display.textContent = -(display.textContent);
-    } else if(operationUsed == ".") {
-      if(display.textContent.includes('.') == true) {
-        return;
-      } else {
-        display.textContent += ".";
-      }
-    } 
-    
-    //if display == 0 or empty string, these buttons will work
-    if (display.textContent == 0 || display.textContent == "") {
-      return;
-    } else if (operation == undefined && num1 == undefined || num1 !== undefined && operation == undefined){
-        if (operationUsed == "+") { // operation addition
-          num1 = Number(display.textContent);
-          getResultReady = true;
-          operation = "+";
-          previousOperation =
-          opDefault();
-        } else if (operationUsed == "-") { // operation subtract
-          num1 = Number(display.textContent);
-          getResultReady = true;
-          operation = "-";
-          opDefault();
-        } else if (operationUsed == "/") { // operation divide
-          num1 = Number(display.textContent);
-          getResultReady = true;
-          operation = "/";
-          opDefault();
-        } else if (operationUsed == "x") { // operation multiply
-          num1 = Number(display.textContent);
-          getResultReady = true;
-          operation = "*";
-          opDefault();
-        }
-      } else if (operation !== undefined && num1 !== undefined && num2 == undefined ){
-      }
-
-      if (operationUsed == "=") { // equal button\
-        /* getOperation.target.classList.add('btn_disabled'); */
-        
-        if (previousOperation == "=") {
-          /* console.log(previousOperation +"is equal"); */
+    if(powerState == true) {
+      if(operationUsed == "AC") {
+        ac();
+      } else if(operationUsed == "C") {
+        c();
+      } else if(operationUsed == "ON") {
+        power(operationUsed);
+      } else if(operationUsed == "+/-") {
+        display.textContent = -(display.textContent);
+      } else if(operationUsed == ".") {
+        if(display.textContent.includes('.') == true) {
           return;
         } else {
-          num2 = Number(display.textContent);
-        if (operation == "") { // equal button will not work if operation is not equal to +-/*
-          console.log("u");
-          return; 
-        } else {
-          if(getResultReady = true) {
-            if(num1 == undefined) {
-              /* console.log("num1 is not ready") */
-            } else if (num1 !== undefined) {
-              console.log("num1 is "+num1, "num2 is "+num2, getResultReady, operation);
-              displayTop.textContent = num1 + " " + operation + " " + num2 + "=";
-              getResult(operation);
-              operation = undefined; // operation should back back to default
-              previousOperation ="=";
-            }
-          } else if(num2==undefined) {
-            /* console.log("invalid") */
+          display.textContent += ".";
+        }
+      } 
+      
+      //if display == 0 or empty string, these buttons will work
+      if (display.textContent == 0 || display.textContent == "") {
+        return;
+      } else if (operation == undefined && num1 == undefined || num1 !== undefined && operation == undefined){
+          if (operationUsed == "+") { // operation addition
+            num1 = Number(display.textContent);
+            getResultReady = true;
+            operation = "+";
+            previousOperation =
+            opDefault();
+          } else if (operationUsed == "-") { // operation subtract
+            num1 = Number(display.textContent);
+            getResultReady = true;
+            operation = "-";
+            opDefault();
+          } else if (operationUsed == "/") { // operation divide
+            num1 = Number(display.textContent);
+            getResultReady = true;
+            operation = "/";
+            opDefault();
+          } else if (operationUsed == "x") { // operation multiply
+            num1 = Number(display.textContent);
+            getResultReady = true;
+            operation = "*";
+            opDefault();
+          }
+        } else if (operation !== undefined && num1 !== undefined && num2 == undefined ){
+        }
+  
+        if (operationUsed == "=") { // equal button\
+          /* getOperation.target.classList.add('btn_disabled'); */
+          
+          if (previousOperation == "=") {
+            /* console.log(previousOperation +"is equal"); */
             return;
+          } else {
+            num2 = Number(display.textContent);
+          if (operation == "") { // equal button will not work if operation is not equal to +-/*
+            console.log("u");
+            return; 
+          } else {
+            if(getResultReady = true) {
+              if(num1 == undefined) {
+                /* console.log("num1 is not ready") */
+              } else if (num1 !== undefined) {
+                console.log("num1 is "+num1, "num2 is "+num2, getResultReady, operation);
+                displayTop.textContent = num1 + " " + operation + " " + num2 + "=";
+                getResult(operation);
+                operation = undefined; // operation should back back to default
+                previousOperation ="=";
+              }
+            } else if(num2==undefined) {
+              /* console.log("invalid") */
+              return;
+            }
+          }
           }
         }
-        }
-      }
+    }
   }));
 
   function getResult(operation) {
@@ -181,14 +185,15 @@ Array.from(operationButton).forEach(key =>
       display.textContent ="";
       displayTop.textContent ="";
       power.textContent = "ON"
-
       power.classList.add("calculator_ON");
       disabledButton();
+      disableScreen()
     } else {
       powerState = true
       power.textContent = "OFF"
       power.classList.remove("calculator_ON");
       enabledButton()
+      enableScreen()
     }
   }
 
@@ -207,5 +212,18 @@ Array.from(operationButton).forEach(key =>
     }
     for(n=0; n<numberButton.length;n++) {
       numberButton[n].classList.remove('btn_disabled')
+    }
+  }
+  
+  
+  function disableScreen() {
+    for(let i=0; i<displayContainer.length;i++) {
+      displayContainer[i].classList.add('screenDisabled');
+    }
+  }
+
+  function enableScreen() {
+    for(let i=0; i<displayContainer.length;i++) {
+      displayContainer[i].classList.remove('screenDisabled');
     }
   }
