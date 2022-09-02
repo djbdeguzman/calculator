@@ -1,27 +1,33 @@
 * {
     margin: 0px;
     padding: 0px;
-    
 }
-
 .calculator__body {
-    width: 420px;
-    border: 5px solid black;
+    margin: 200px auto;
+    width: 390px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 25px 0px;
+    background-color: #eee4e1;
+    font-family: Montserrat;
+    position: relative;
 }
-
+.border-main-5px {
+    border: 5px solid #e6beae;
+}
 .displayContainer {
     text-align: end;
     height: 100px;
     width: 300px;
     margin: 8px;
-    border: 5px solid black;
     margin-bottom: 0px;
     overflow: scroll;
     font-size: 30px;
+    background-color: #ecf8f8;
+    font-family: orbitron;
+    border-radius: 10px;
 }
 .display-top {
     height: 60%;
@@ -36,6 +42,13 @@
     width: 4em;
     margin: .5em;
     font-size: 16px;
+    background-color: #e6beae9c;
+    border-radius: 10px;
+    border: 2px solid #e6beae;
+}
+.btn:hover {
+    cursor: pointer;
+    background-color: #e6beae;
 }
 .btn_container {
     /* display: grid;
@@ -51,17 +64,28 @@
     flex-direction: column;
 }
 .btn_power {
-    background-color: grey;
-    color: white;
+    background-color: #b2967d;
+    color: black;
+    border: 2px solid rgba(230, 190, 174, 0.781);
 }
 
 /* JavaScript Styles */
 .btn_disabled {
-    background-color: grey;
-    color: white;
+    background-color: #e7d8c9;
+    color: black;
+}
+.btn_disabled:hover {
+    cursor:default;
 }
 /* power button design */
 .calculator_ON {
-    background-color: green;
+    background-color: #b2967d;
     color: black;
+}
+
+footer {
+    position: absolute;
+    font-size: .85em;
+    right: 45px;
+    bottom: 10px;
 }

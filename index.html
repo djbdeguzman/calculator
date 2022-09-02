@@ -5,23 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat"/>
     <title>On Web Calculator</title>
 </head>
 <body>
     <div class="calculator">
         <div>
-            <div class="calculator__body">
-                <div class="displayContainer">
+            <div class="calculator__body border-main-5px">
+                <div class="displayContainer border-main-5px">
                     <div class="display-top"></div>
                     <div class="display-bottom"></div>
                 </div>
                 <div class="btn_container">
                     <div class="btn__container-col col1">
-                        <button class="btn btn_power" onclick="calculatorPowerButton()">ON</button>
+                        <button class="btn btn_power calculator_ON" onclick="calculatorPowerButton()">ON</button>
                         <button class="btn btn_number">7</button>
                         <button class="btn btn_number">4</button>
                         <button class="btn btn_number">1</button>
-                        <button class="btn btn_operation">+/-</button>
+                        <button class="btn btn_operation btn_operand">+/-</button>
                     </div>
                     <div class="btn__container-col col2">
                         <button class="btn btn_operation">AC</button>
@@ -45,6 +47,7 @@
                         <button class="btn btn_operation">=</button>
                     </div>
                 </div>
+                <footer><strong>&copy; Jette</strong></footer>
             </div>
         </div>
     </div>
